@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+		"moduleResolution": "node",
+		"module": "commonjs",
+		"declaration": true,
+		"strict": true,
+		"pretty": true,
+		"lib": [
+				"es2016",
+				"dom"
+		],
+		"rootDir": "./",
+		"composite": true,
+		"outDir": "../build"
+	},
+	"compileOnSave": true
+}

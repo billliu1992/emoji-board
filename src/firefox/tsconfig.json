@@ -1,0 +1,7 @@
+{
+	"include": ["*.ts"],
+	"extends": "../tsconfig_base.json",
+	"references": [
+		{ "path": "../lib" }
+	]
+}
