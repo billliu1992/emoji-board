@@ -4,8 +4,11 @@
 	"version": "0.0.1",
 	"content_scripts": [
 		{
-			"matches": ["*://*.mozilla.org/*"],
-			"js": ["emoji.js"]
+		  "matches": ["<all_urls>"],
+		  "js": ["ContentScript.js"]
 		}
+	],
+	"permissions": [
+		"<all_urls>"
 	]
 }

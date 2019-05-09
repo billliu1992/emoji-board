@@ -10,8 +10,17 @@
 				"dom"
 		],
 		"rootDir": "./",
+		"outDir": "../build",
 		"composite": true,
-		"outDir": "../build"
+		"plugins": [
+			{
+			  "name": "typescript-tslint-plugin",
+			  "alwaysShowRuleFailuresAsWarnings": false,
+			  "ignoreDefinitionFiles": true,
+			  "configFile": "../tslint.json"
+			}
+		],
+		"types": ["web-ext-types"]
 	},
 	"compileOnSave": true
 }

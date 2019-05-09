@@ -1,0 +1,15 @@
+{
+	"categories" : [
+		{
+			"name": "Test",
+			"emojis": [
+				{
+					"text": "HI"
+				},
+				{
+					"text": "BYE"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,13 @@
+<div class="{{'kb-container'|cssPre}}">
+	<div>Search here</div>
+	{% for category in categories %}
+		<div>{{ category.name }}</div>
+		<div class="{{'kb-category'|cssPre}}">
+			{% for emoji in category.emojis %}
+				<span class="{{'kb-key'|cssPre}}" data-emoji-button>
+					{{emoji.text}}
+				</span>
+			{% endfor %}
+		</div>
+	{% endfor %}
+</div>
