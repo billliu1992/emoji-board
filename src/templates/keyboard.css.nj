@@ -1,0 +1,23 @@
+{% set borderRadius='5px' %}
+
+{# White theme colors #}
+
+{% set whiteBg='#fafafa' %}
+{% set whiteDark='#333' %}
+{% set whiteDarker='#1a1a1a' %}
+
+.{{'kb-container'|cssPre}} {
+	background-color: {{whiteBg}};
+	border: 1px solid {{whiteDark}};
+	border-radius: {{borderRadius}};
+	padding: 10px;
+	position: absolute;
+}
+
+.{{'kb-search'|cssPre}} {
+	background-color: {{whiteBg}};
+	color: {{whiteDarker}};
+	border: 1px solid {{whiteDark}};
+	padding: 2px 3px;
+	border-radius: {{borderRadius}}
+}

@@ -5,7 +5,8 @@
 	"content_scripts": [
 		{
 		  "matches": ["<all_urls>"],
-		  "js": ["ContentScript.js"]
+			"js": ["ContentScript.js"],
+			"css": ["keyboard.css"]
 		}
 	],
 	"permissions": [

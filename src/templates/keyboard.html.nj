@@ -1,5 +1,5 @@
 <div class="{{'kb-container'|cssPre}}">
-	<div>Search here</div>
+	<input class="{{'kb-search'|cssPre}}" type="text" placeholder="Search" data-emoji-search>
 	{% for category in categories %}
 		<div>{{ category.name }}</div>
 		<div class="{{'kb-category'|cssPre}}">

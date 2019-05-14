@@ -37,13 +37,13 @@ export default class PageController {
 		this.currentFocus.focus();
 	}
 
-	private async fetchHtml(url: string): Promise<Element> {
+	private async fetchHtml(url: string): Promise<HTMLElement> {
 		return fetch(this.keyboardTemplateUrl)
 			.then((response) => response.text())
 			.then((responseText) => {
 				const htmlDocument =
 					(new DOMParser()).parseFromString(responseText, 'text/html');
-				return htmlDocument.body.children[0];
+				return htmlDocument.body.children[0] as HTMLElement; // should always be element
 			});
 	}
 }

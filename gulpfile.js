@@ -1,5 +1,6 @@
 const gulp = require('gulp');
 const del = require('del');
+const emoji = require('emoji.json');
 const fs = require('fs');
 const file = require('gulp-file');
 const browserify = require('browserify');
@@ -11,7 +12,12 @@ const BUILD_DIR = './build/';
 const SRC_DIR = './src/';
 const CSS_CLASSNAME_PREFIX = 'emoji_kb_ext-';
 
-const nunjucksEnv = new nunjucks.Environment(new nunjucks.FileSystemLoader(), {trimBlocks: true});
+const nunjucksEnv = new nunjucks.Environment(
+	new nunjucks.FileSystemLoader(),
+	{
+		trimBlocks: true,
+		noCache: true,
+	});
 nunjucksEnv.addFilter('cssPre', (text) => {
 	return text.split(' ').map((baseClass) => CSS_CLASSNAME_PREFIX + baseClass).join(' ');
 });
@@ -23,6 +29,8 @@ function clean() {
 		BUILD_DIR + '**/*.ts',
 		BUILD_DIR + '**/*.tsbuildinfo',
 		BUILD_DIR + '**/*.json',
+		BUILD_DIR + '**/*.html',
+		BUILD_DIR + '**/*.css',
 	]);
 }
 
@@ -40,7 +48,7 @@ function firefoxManifest() {
 		.pipe(gulp.dest(BUILD_DIR + 'firefox'));
 }
 
-function firefoxTemplates() {
+function firefoxHtml() {
 	const parsedConfig =
 		JSON.parse(fs.readFileSync(SRC_DIR + 'emoji.json'));
 	const renderedTemplate =
@@ -50,11 +58,21 @@ function firefoxTemplates() {
 		.pipe(gulp.dest(BUILD_DIR + 'firefox'));
 }
 
+function firefoxCss() {
+	const renderedTemplate =
+		nunjucksEnv.render(SRC_DIR + 'templates/keyboard.css.nj', {});
+	
+	return file('keyboard.css', renderedTemplate, { src: true })
+		.pipe(gulp.dest(BUILD_DIR + 'firefox'));
+}
+
 function watchFirefox() {
 	return gulp.watch([SRC_DIR + '**/*'], firefox);
 }
 
-const firefox = gulp.series(clean, firefoxScripts, firefoxManifest, firefoxTemplates);
+const firefox = gulp.series(
+	clean,
+	gulp.parallel(firefoxScripts, firefoxManifest, firefoxHtml, firefoxCss));
 
 exports.clean = clean;
 exports['build-ff'] = firefox;
