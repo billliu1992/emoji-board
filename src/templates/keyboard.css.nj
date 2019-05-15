@@ -3,6 +3,8 @@
 {# White theme colors #}
 
 {% set whiteBg='#fafafa' %}
+{% set whiteLighter='#ddd' %}
+{% set whiteLight='#aaa' %}
 {% set whiteDark='#333' %}
 {% set whiteDarker='#1a1a1a' %}
 
@@ -10,14 +12,63 @@
 	background-color: {{whiteBg}};
 	border: 1px solid {{whiteDark}};
 	border-radius: {{borderRadius}};
+	display: flex;
+	flex-direction: column;
+	height: 8em;
 	padding: 10px;
 	position: absolute;
+	width: 20em;
+	z-index: 999999;
 }
 
 .{{'kb-search'|cssPre}} {
 	background-color: {{whiteBg}};
-	color: {{whiteDarker}};
 	border: 1px solid {{whiteDark}};
+	border-radius: {{borderRadius}};
+	color: {{whiteDarker}};
 	padding: 2px 3px;
-	border-radius: {{borderRadius}}
+	width: 100%;
+}
+
+.{{'kb-category-selector'|cssPre}} {
+	border-bottom: 1px solid {{whiteDark}};
+	display: flex;
+	justify-content: space-around;
+	padding: 5px 0;
+	
+	{# No selecting text #}
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.{{'kb-category-selector-option'|cssPre}} {
+	border-radius: {{borderRadius}};
+	padding: 5px 3px;
+}
+.{{'kb-category-selector-option'|cssPre}}:hover {
+	background-color: {{whiteLighter}};
+}
+.{{'kb-category-selector-option'|cssPre}}:active {
+	background-color: {{whiteLight}};
+}
+
+.{{'kb-emoji-selector'|cssPre}} {
+	padding: 5px 0 0 10px;
+	overflow-x: auto;
+	user-select none;
+
+	{# Firefox only #}
+	scrollbar-color: {{whiteLight}} {{whiteBg}};
+	scrollbar-width: thin;
+}
+
+.{{'kb-key'|cssPre}} {
+	background: inherit;
+	border: none;
+	cursor: pointer;
+	font-size: 1em;
+	padding: 2px;
+	margin: 0;
 }

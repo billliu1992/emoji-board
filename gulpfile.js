@@ -1,12 +1,12 @@
 const gulp = require('gulp');
 const del = require('del');
 const emoji = require('emoji.json');
-const fs = require('fs');
 const file = require('gulp-file');
 const browserify = require('browserify');
 const tsify = require('tsify');
 const source = require('vinyl-source-stream');
 const nunjucks = require('nunjucks');
+const htmlmin = require('gulp-htmlmin');
 
 const BUILD_DIR = './build/';
 const SRC_DIR = './src/';
@@ -21,6 +21,37 @@ const nunjucksEnv = new nunjucks.Environment(
 nunjucksEnv.addFilter('cssPre', (text) => {
 	return text.split(' ').map((baseClass) => CSS_CLASSNAME_PREFIX + baseClass).join(' ');
 });
+
+function buildEmojiMap() {
+	// Nastiness that basically transforms emoji.json into something we can use.
+	const textToEmojiMap = {};
+	const emojiToTextMap = {};
+	const categorizedEmoji = {}
+	emoji.forEach((entry) => {
+		const {char, name, keywords, category} = entry;
+		if (!(category in textToEmojiMap)) {
+			textToEmojiMap[category] = char;
+			emojiToTextMap[char] = category;
+		}
+		if (!(textToEmojiMap[category] in categorizedEmoji)) {
+			categorizedEmoji[textToEmojiMap[category]] = [];
+		}
+		categorizedEmoji[textToEmojiMap[category]].push({
+			text: char,
+			altText: name,
+			searchWords: keywords.split(' | ').join(','),
+		});	
+	});
+	const categories = [];
+	for(let category in categorizedEmoji) {
+		categories.push({
+			name: category,
+			altText: emojiToTextMap[category],
+			emojis: categorizedEmoji[category],
+		});
+	}
+	return {categories};
+}
 
 
 function clean() {
@@ -49,12 +80,11 @@ function firefoxManifest() {
 }
 
 function firefoxHtml() {
-	const parsedConfig =
-		JSON.parse(fs.readFileSync(SRC_DIR + 'emoji.json'));
 	const renderedTemplate =
-		nunjucksEnv.render(SRC_DIR + 'templates/keyboard.html.nj', parsedConfig);
+		nunjucksEnv.render(SRC_DIR + 'templates/keyboard.html.nj', buildEmojiMap());
 	
 	return file('keyboard.html', renderedTemplate, { src: true })
+		.pipe(htmlmin())
 		.pipe(gulp.dest(BUILD_DIR + 'firefox'));
 }
 

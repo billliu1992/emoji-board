@@ -1,13 +1,19 @@
 <div class="{{'kb-container'|cssPre}}">
 	<input class="{{'kb-search'|cssPre}}" type="text" placeholder="Search" data-emoji-search>
-	{% for category in categories %}
-		<div>{{ category.name }}</div>
-		<div class="{{'kb-category'|cssPre}}">
-			{% for emoji in category.emojis %}
-				<span class="{{'kb-key'|cssPre}}" data-emoji-button>
-					{{emoji.text}}
-				</span>
-			{% endfor %}
-		</div>
-	{% endfor %}
+	<div class="{{'kb-category-selector'|cssPre}}">
+		{% for category in categories %}
+			<a class="{{'kb-category-selector-option'|cssPre}}">
+				{{ category.name }}
+			</a>
+		{% endfor %}
+	</div>
+	<div class="{{'kb-emoji-selector'|cssPre}}">
+		{% for category in categories %}
+			<span class="{{'kb-category'|cssPre}}">
+				{% for emoji in category.emojis %}
+					<button type="button" class="{{'kb-key'|cssPre}}" data-emoji-button>{{emoji.text}}</button>
+				{% endfor %}
+			</span>
+		{% endfor %}
+	</div>
 </div>
