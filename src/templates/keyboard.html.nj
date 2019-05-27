@@ -12,7 +12,10 @@
 		{% for category in categories %}
 			<span class="{{'kb-category'|cssPre}} kb-cat-{{loop.index}}">
 				{% for emoji in category.emojis %}{# -- Leave no space between emojis
-					#}<button type="button" class="{{'kb-key'|cssPre}}" data-emoji-button>
+					#}<button type="button"
+							class="{{'kb-key'|cssPre}}"
+							title="{{emoji.altText}}"
+							data-emoji-button="{{emoji.searchWords}}">
 						{{emoji.text}}
 					</button>{#
 				#}{% endfor %}

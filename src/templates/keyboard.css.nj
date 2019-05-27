@@ -85,3 +85,17 @@
 		background-color: {{whiteLighter}};
 	}
 {% endfor %}
+
+{# Handle search bar in CSS #}
+.kb-emoji-is-searching .{{'kb-category-selector'|cssPre}} {
+	display: none;
+}
+.kb-emoji-is-searching .{{'kb-category-selector-option'|cssPre}} {
+	display: unset;
+}
+.kb-emoji-is-searching .{{'kb-key'|cssPre}} {
+	display: none;
+}
+.kb-emoji-is-searching .{{'kb-key'|cssPre}}.kb-emoji-search-entry {
+	display: unset;
+}

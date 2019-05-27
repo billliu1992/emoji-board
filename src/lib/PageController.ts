@@ -19,13 +19,6 @@ export default class PageController {
 						this.currentFocus = keyEvent.target as HTMLInputElement;
 						keyboardController.showKeyboardAbove(this.currentFocus);
 					}
-					if (keyEvent.key === 'Escape') {
-						if (this.currentFocus) {
-							this.currentFocus.focus();
-						}
-						this.currentFocus = null;
-						keyboardController.hideKeyboard();
-					}
 				});
 			});
 	}

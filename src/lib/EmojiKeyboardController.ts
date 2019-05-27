@@ -1,22 +1,29 @@
 const EMOJI_BUTTON_ATTRIBUTE = 'data-emoji-button';
 const EMOJI_CATEGORY_ATTRIBUTE = 'data-emoji-category';
+
+const EMOJI_IS_SEARCHING_CLASS = 'kb-emoji-is-searching';
+const EMOJI_SEARCH_ENTRY_CLASS = 'kb-emoji-search-entry';
+
 const STYLE_KEYBOARD_PADDING_PX = 10;
 
 export default class EmojiKeyboardController {
 	private currentFocus: HTMLInputElement|null;
 	private searchInputEl: HTMLInputElement;
+	private emojiButtons: NodeList;
 	constructor(
 			public appendPoint: HTMLElement,
 			public keyboardEl: HTMLElement) {
-		this.initializeKeyboardListeners();
-
 		const inputEl = keyboardEl.querySelector('input');
 		if (inputEl === null) {
 			throw new Error('Somehow the keyboard did not have a search bar');
 		}
 		this.searchInputEl = inputEl;
 
+		this.emojiButtons = this.keyboardEl.querySelectorAll(`[${EMOJI_BUTTON_ATTRIBUTE}]`);
+
 		this.currentFocus = null;
+
+		this.initializeKeyboardListeners();
 	}
 
 	public showKeyboardAbove(element: HTMLInputElement) {
@@ -27,11 +34,16 @@ export default class EmojiKeyboardController {
 	}
 
 	public hideKeyboard() {
+		this.stopSearching();
 		this.keyboardEl.remove();
 	}
 
 	public isShowing(): boolean {
 		return !!this.keyboardEl.parentElement;
+	}
+
+	public isSearching(): boolean {
+		return !!this.keyboardEl.classList.contains(EMOJI_IS_SEARCHING_CLASS);
 	}
 
 	private initializeKeyboardListeners() {
@@ -54,6 +66,47 @@ export default class EmojiKeyboardController {
 
 			if (!this.keyboardEl.contains(focusOutEvent.relatedTarget as Element)) {
 				this.hideKeyboard();
+			}
+		});
+		this.keyboardEl.addEventListener('keyup', (keyEvent) => {
+			if (keyEvent.key !== 'Escape') {
+				return;
+			}
+			if (this.isSearching()) {
+				this.stopSearching();
+				return;
+			}
+
+			if (this.currentFocus) {
+				this.currentFocus.focus();
+			}
+			this.currentFocus = null;
+			this.hideKeyboard();
+		});
+		this.searchInputEl.addEventListener('keyup', (event) => {
+			const searchBarValue = this.searchInputEl.value;
+			if (searchBarValue.length === 0) {
+				this.stopSearching();
+			} else if (searchBarValue.length > 2) {
+				this.startSearchingFor(searchBarValue);
+			}
+		});
+	}
+
+	private stopSearching() {
+		this.searchInputEl.value = '';
+		this.keyboardEl.classList.remove(EMOJI_IS_SEARCHING_CLASS);
+	}
+
+	private startSearchingFor(searchQuery: string) {
+		this.keyboardEl.classList.add(EMOJI_IS_SEARCHING_CLASS);
+		this.emojiButtons.forEach((node) => {
+			const element = node as Element;
+			const searchWords = element.getAttribute(EMOJI_BUTTON_ATTRIBUTE);
+			if (searchWords && searchWords.indexOf(searchQuery) > -1) {
+				element.classList.add(EMOJI_SEARCH_ENTRY_CLASS);
+			} else {
+				element.classList.remove(EMOJI_SEARCH_ENTRY_CLASS);
 			}
 		});
 	}
