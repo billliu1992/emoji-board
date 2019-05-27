@@ -14,10 +14,10 @@
 	border-radius: {{borderRadius}};
 	display: flex;
 	flex-direction: column;
-	height: 8em;
+	height: 11em;
 	padding: 10px;
 	position: absolute;
-	width: 20em;
+	width: 22em;
 	z-index: 999999;
 }
 
@@ -72,3 +72,16 @@
 	padding: 2px;
 	margin: 0;
 }
+
+{# Handle displaying/hiding categories in CSS #}
+{% for category in categories %}
+	.kb-cat-{{loop.index}} {
+		display: none;
+	}
+	.kb-cat-{{loop.index}}-active .kb-cat-{{loop.index}} {
+		display: unset;
+	}
+	.kb-cat-{{loop.index}}-active .kb-cat-{{loop.index}}-btn {
+		background-color: {{whiteLighter}};
+	}
+{% endfor %}

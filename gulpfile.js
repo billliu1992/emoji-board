@@ -22,7 +22,7 @@ nunjucksEnv.addFilter('cssPre', (text) => {
 	return text.split(' ').map((baseClass) => CSS_CLASSNAME_PREFIX + baseClass).join(' ');
 });
 
-function buildEmojiMap() {
+function buildEmojiConfig() {
 	// Nastiness that basically transforms emoji.json into something we can use.
 	const textToEmojiMap = {};
 	const emojiToTextMap = {};
@@ -53,6 +53,7 @@ function buildEmojiMap() {
 	return {categories};
 }
 
+const emojiConfig = buildEmojiConfig();
 
 function clean() {
 	return del([
@@ -81,7 +82,7 @@ function firefoxManifest() {
 
 function firefoxHtml() {
 	const renderedTemplate =
-		nunjucksEnv.render(SRC_DIR + 'templates/keyboard.html.nj', buildEmojiMap());
+		nunjucksEnv.render(SRC_DIR + 'templates/keyboard.html.nj', emojiConfig);
 	
 	return file('keyboard.html', renderedTemplate, { src: true })
 		.pipe(htmlmin())
@@ -90,7 +91,7 @@ function firefoxHtml() {
 
 function firefoxCss() {
 	const renderedTemplate =
-		nunjucksEnv.render(SRC_DIR + 'templates/keyboard.css.nj', {});
+		nunjucksEnv.render(SRC_DIR + 'templates/keyboard.css.nj', emojiConfig);
 	
 	return file('keyboard.css', renderedTemplate, { src: true })
 		.pipe(gulp.dest(BUILD_DIR + 'firefox'));
