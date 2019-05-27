@@ -93,6 +93,9 @@
 .kb-emoji-is-searching .{{'kb-category-selector-option'|cssPre}} {
 	display: unset;
 }
+.kb-emoji-is-searching .{{'kb-category'|cssPre}} {
+	display: unset;
+}
 .kb-emoji-is-searching .{{'kb-key'|cssPre}} {
 	display: none;
 }

@@ -72,10 +72,9 @@ export default class EmojiKeyboardController {
 			if (keyEvent.key !== 'Escape') {
 				return;
 			}
-			if (this.isSearching()) {
-				this.stopSearching();
-				return;
-			}
+
+			keyEvent.stopPropagation();
+			keyEvent.preventDefault();
 
 			if (this.currentFocus) {
 				this.currentFocus.focus();
