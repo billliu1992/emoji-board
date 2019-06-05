@@ -1,16 +1,8 @@
 {% set borderRadius='5px' %}
 
-{# White theme colors #}
-
-{% set whiteBg='#fafafa' %}
-{% set whiteLighter='#ddd' %}
-{% set whiteLight='#aaa' %}
-{% set whiteDark='#333' %}
-{% set whiteDarker='#1a1a1a' %}
-
 .{{'kb-container'|cssPre}} {
-	background-color: {{whiteBg}};
-	border: 1px solid {{whiteDark}};
+	border-width: 1px
+	border-style: solid;
 	border-radius: {{borderRadius}};
 	display: flex;
 	flex-direction: column;
@@ -22,16 +14,12 @@
 }
 
 .{{'kb-search'|cssPre}} {
-	background-color: {{whiteBg}};
-	border: 1px solid {{whiteDark}};
-	border-radius: {{borderRadius}};
-	color: {{whiteDarker}};
 	padding: 2px 3px;
 	width: 100%;
 }
 
 .{{'kb-category-selector'|cssPre}} {
-	border-bottom: 1px solid {{whiteDark}};
+	border-bottom: 1px solid inherit;
 	display: flex;
 	justify-content: space-around;
 	padding: 5px 0;
@@ -47,12 +35,6 @@
 	border-radius: {{borderRadius}};
 	padding: 5px 3px;
 }
-.{{'kb-category-selector-option'|cssPre}}:hover {
-	background-color: {{whiteLighter}};
-}
-.{{'kb-category-selector-option'|cssPre}}:active {
-	background-color: {{whiteLight}};
-}
 
 .{{'kb-emoji-selector'|cssPre}} {
 	padding: 5px 0 0 10px;
@@ -60,7 +42,6 @@
 	user-select none;
 
 	{# Firefox only #}
-	scrollbar-color: {{whiteLight}} {{whiteBg}};
 	scrollbar-width: thin;
 }
 
@@ -81,9 +62,6 @@
 	.kb-cat-{{loop.index}}-active .kb-cat-{{loop.index}} {
 		display: unset;
 	}
-	.kb-cat-{{loop.index}}-active .kb-cat-{{loop.index}}-btn {
-		background-color: {{whiteLighter}};
-	}
 {% endfor %}
 
 {# Handle search bar in CSS #}
@@ -102,3 +80,45 @@
 .kb-emoji-is-searching .{{'kb-key'|cssPre}}.kb-emoji-search-entry {
 	display: unset;
 }
+
+{# Theme definitions #}
+
+{# White theme #}
+
+{% set whiteBg='#fafafa' %}
+{% set whiteLighter='#ddd' %}
+{% set whiteLight='#aaa' %}
+{% set whiteDark='#333' %}
+{% set whiteDarker='#1a1a1a' %}
+
+{% set whiteTheme='kb-theme-white'|cssPre %}
+{{whiteTheme}}.{{'kb-container'|cssPre}} {
+	background-color: {{whiteBg}};
+	border-color: {{whiteDark}};
+}
+
+{{whiteTheme}} .{{'kb-search'|cssPre}} {
+	background-color: {{whiteBg}};
+	border: 1px solid {{whiteDark}};
+	border-radius: {{borderRadius}};
+	color: {{whiteDarker}};
+}
+
+{{whiteTheme}} .{{'kb-category-selector-option'|cssPre}}:hover {
+	background-color: {{whiteLighter}};
+}
+
+{{whiteTheme}} .{{'kb-category-selector-option'|cssPre}}:active {
+	background-color: {{whiteLight}};
+}
+
+{{whiteTheme}} .{{'kb-emoji-selector'|cssPre}} {
+	{# Firefox only #}
+	scrollbar-color: {{whiteLight}} {{whiteBg}};
+}
+
+{% for category in categories %}
+	{{whiteTheme}} .kb-cat-{{loop.index}}-active .kb-cat-{{loop.index}}-btn {
+		background-color: {{whiteLighter}};
+	}
+{% endfor %}

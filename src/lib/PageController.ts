@@ -1,8 +1,6 @@
 import EmojiKeyboardController from './EmojiKeyboardController';
 
 export default class PageController {
-	private currentFocus: HTMLInputElement|null = null;
-
 	constructor(public attachPoint: HTMLElement, public keyboardTemplateUrl: string) {
 		this.fetchHtml(this.keyboardTemplateUrl)
 			.then((el) => {
@@ -16,8 +14,9 @@ export default class PageController {
 						if (!keyEvent.target || !('value' in keyEvent.target)) {
 							return;
 						}
-						this.currentFocus = keyEvent.target as HTMLInputElement;
-						keyboardController.showKeyboardAbove(this.currentFocus);
+						const targetInputElement =
+							keyEvent.target as HTMLInputElement; // should have value
+						keyboardController.attachKeyboardTo(targetInputElement);
 					}
 				});
 			});

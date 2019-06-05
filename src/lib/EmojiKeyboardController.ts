@@ -7,7 +7,7 @@ const EMOJI_SEARCH_ENTRY_CLASS = 'kb-emoji-search-entry';
 const STYLE_KEYBOARD_PADDING_PX = 10;
 
 export default class EmojiKeyboardController {
-	private currentFocus: HTMLInputElement|null;
+	private currentInput: HTMLInputElement|null;
 	private searchInputEl: HTMLInputElement;
 	private emojiButtons: NodeList;
 	constructor(
@@ -21,16 +21,21 @@ export default class EmojiKeyboardController {
 
 		this.emojiButtons = this.keyboardEl.querySelectorAll(`[${EMOJI_BUTTON_ATTRIBUTE}]`);
 
-		this.currentFocus = null;
+		this.currentInput = null;
 
 		this.initializeKeyboardListeners();
 	}
 
-	public showKeyboardAbove(element: HTMLInputElement) {
+	public attachKeyboardTo(element: HTMLInputElement) {
+		// We do not want to attach the keyboard to itself, the interaction is extremely awkward.
+		if (this.keyboardEl.contains(element)) {
+			return;
+		}
+
 		this.appendPoint.appendChild(this.keyboardEl);
 		this.positionKeyboardAround(element);
 		this.searchInputEl.focus();
-		this.currentFocus = element;
+		this.currentInput = element;
 	}
 
 	public hideKeyboard() {
@@ -50,8 +55,12 @@ export default class EmojiKeyboardController {
 		this.keyboardEl.addEventListener('click', (event) => {
 			const targetEl = event.target as HTMLElement; // Should always be element.
 			if (typeof targetEl.getAttribute(EMOJI_BUTTON_ATTRIBUTE) === 'string') {
-				if (this.currentFocus) {
-					this.currentFocus.value += targetEl.innerText;
+				if (this.currentInput) {
+					this.currentInput.value += targetEl.innerText;
+					// Simulate as if this was entered through a keyboard.
+					this.currentInput.dispatchEvent(new Event('change'));
+					this.currentInput.dispatchEvent(new Event('keydown'));
+					this.currentInput.dispatchEvent(new Event('keyup'));
 				}
 			} else if (typeof targetEl.getAttribute(EMOJI_CATEGORY_ATTRIBUTE) === 'string') {
 				const newCategory = targetEl.getAttribute(EMOJI_CATEGORY_ATTRIBUTE);
@@ -69,18 +78,20 @@ export default class EmojiKeyboardController {
 			}
 		});
 		this.keyboardEl.addEventListener('keyup', (keyEvent) => {
-			if (keyEvent.key !== 'Escape') {
-				return;
-			}
+			switch (keyEvent.key) {
+				case 'Escape':
+					// Fall through
+				case 'Enter':
+					keyEvent.stopPropagation();
+					keyEvent.preventDefault();
+					if (this.currentInput) {
+						this.currentInput.focus();
+					}
+					this.currentInput = null;
+					this.hideKeyboard();
 
-			keyEvent.stopPropagation();
-			keyEvent.preventDefault();
-
-			if (this.currentFocus) {
-				this.currentFocus.focus();
+					break;
 			}
-			this.currentFocus = null;
-			this.hideKeyboard();
 		});
 		this.searchInputEl.addEventListener('keyup', (event) => {
 			const searchBarValue = this.searchInputEl.value;
