@@ -1,10 +1,10 @@
-<div class="{{'kb-container'|cssPre}} kb-cat-1-active" tabindex="0">
+<div class="{{'kb-container kb-theme-white'|cssPre}} kb-cat-1-active" tabindex="0">
 	<input class="{{'kb-search'|cssPre}}" type="text" placeholder="Search" data-emoji-search>
 	<div class="{{'kb-category-selector'|cssPre}}">
 		{% for category in categories %}
 			<a class="{{'kb-category-selector-option'|cssPre}} kb-cat-{{loop.index}}-link"
 					title="{{category.altText}}" data-emoji-category="{{loop.index}}">
-				{{ category.name }}
+				{{ category.name }}&#xfe0e;
 			</a>
 		{% endfor %}
 	</div>
@@ -16,7 +16,7 @@
 							class="{{'kb-key'|cssPre}}"
 							title="{{emoji.altText}}"
 							data-emoji-button="{{emoji.searchWords}}">
-						{{emoji.text}}
+						{{emoji.text}}&#xfe0f;
 					</button>{#
 				#}{% endfor %}
 			</span>

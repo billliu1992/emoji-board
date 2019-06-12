@@ -1,12 +1,11 @@
 {% set borderRadius='5px' %}
 
 .{{'kb-container'|cssPre}} {
-	border-width: 1px
-	border-style: solid;
+	border: 1px solid;
 	border-radius: {{borderRadius}};
 	display: flex;
 	flex-direction: column;
-	height: 11em;
+	height: 11rem;
 	padding: 10px;
 	position: absolute;
 	width: 22em;
@@ -19,10 +18,11 @@
 }
 
 .{{'kb-category-selector'|cssPre}} {
-	border-bottom: 1px solid inherit;
+	border-bottom: 1px solid;
+	border-color: inherit;
 	display: flex;
 	justify-content: space-around;
-	padding: 5px 0;
+	padding: 5px;
 	
 	{# No selecting text #}
 	-moz-user-select: none;
@@ -33,7 +33,11 @@
 
 .{{'kb-category-selector-option'|cssPre}} {
 	border-radius: {{borderRadius}};
+	cursor: pointer;
+	font-size: 1.3em;
+	line-height: 1.3em;
 	padding: 5px 3px;
+	vertical-align: middle;
 }
 
 .{{'kb-emoji-selector'|cssPre}} {
@@ -48,10 +52,13 @@
 .{{'kb-key'|cssPre}} {
 	background: inherit;
 	border: none;
+	border-radius: {{borderRadius}};
+	box-sizing: content-box;
 	cursor: pointer;
-	font-size: 1em;
-	padding: 2px;
+	font-size: 1.1em;
 	margin: 0;
+	padding: .3em;
+	vertical-align: middle;
 }
 
 {# Handle displaying/hiding categories in CSS #}
@@ -92,29 +99,34 @@
 {% set whiteDarker='#1a1a1a' %}
 
 {% set whiteTheme='kb-theme-white'|cssPre %}
-{{whiteTheme}}.{{'kb-container'|cssPre}} {
+.{{whiteTheme}}.{{'kb-container'|cssPre}} {
 	background-color: {{whiteBg}};
 	border-color: {{whiteDark}};
 }
 
-{{whiteTheme}} .{{'kb-search'|cssPre}} {
+.{{whiteTheme}} .{{'kb-search'|cssPre}} {
 	background-color: {{whiteBg}};
 	border: 1px solid {{whiteDark}};
 	border-radius: {{borderRadius}};
 	color: {{whiteDarker}};
 }
 
-{{whiteTheme}} .{{'kb-category-selector-option'|cssPre}}:hover {
+.{{whiteTheme}} .{{'kb-category-selector-option'|cssPre}}:hover {
 	background-color: {{whiteLighter}};
 }
 
-{{whiteTheme}} .{{'kb-category-selector-option'|cssPre}}:active {
+.{{whiteTheme}} .{{'kb-category-selector-option'|cssPre}}:active {
 	background-color: {{whiteLight}};
 }
 
-{{whiteTheme}} .{{'kb-emoji-selector'|cssPre}} {
+.{{whiteTheme}} .{{'kb-emoji-selector'|cssPre}} {
 	{# Firefox only #}
 	scrollbar-color: {{whiteLight}} {{whiteBg}};
+}
+
+.{{whiteTheme}} .{{'kb-key'|cssPre}}:hover {
+	background-color: {{whiteLight}};
+	color: {{whiteDarker}};
 }
 
 {% for category in categories %}

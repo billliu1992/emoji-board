@@ -34,6 +34,9 @@ function buildEmojiConfig() {
 		if (category === 'Component') {
 			return;
 		}
+		if (name.indexOf('⊛') > -1) {
+			return;
+		}
 		if (!(category in textToEmojiMap)) {
 			textToEmojiMap[category] = char;
 			emojiToTextMap[char] = category;

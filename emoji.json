@@ -430,11 +430,6 @@
           "searchWords": "face,tired"
         },
         {
-          "text": "🥱",
-          "altText": "⊛ yawning face",
-          "searchWords": "bored,tired,yawn,yawning face"
-        },
-        {
           "text": "😤",
           "altText": "face with steam from nose",
           "searchWords": "face,face with steam from nose,triumph,won"
@@ -665,19 +660,9 @@
           "searchWords": "purple,purple heart"
         },
         {
-          "text": "🤎",
-          "altText": "⊛ brown heart",
-          "searchWords": "brown,heart"
-        },
-        {
           "text": "🖤",
           "altText": "black heart",
           "searchWords": "black,black heart,evil,wicked"
-        },
-        {
-          "text": "🤍",
-          "altText": "⊛ white heart",
-          "searchWords": "heart,white"
         },
         {
           "text": "💯",
@@ -784,11 +769,6 @@
           "text": "👌",
           "altText": "OK hand",
           "searchWords": "hand,OK"
-        },
-        {
-          "text": "🤏",
-          "altText": "⊛ pinching hand",
-          "searchWords": "pinching hand,small amount"
         },
         {
           "text": "✌",
@@ -926,16 +906,6 @@
           "searchWords": "biceps,comic,flex,flexed biceps,muscle"
         },
         {
-          "text": "🦾",
-          "altText": "⊛ mechanical arm",
-          "searchWords": "accessibility,mechanical arm,prosthetic"
-        },
-        {
-          "text": "🦿",
-          "altText": "⊛ mechanical leg",
-          "searchWords": "accessibility,mechanical leg,prosthetic"
-        },
-        {
           "text": "🦵",
           "altText": "leg",
           "searchWords": "kick,leg,limb"
@@ -949,11 +919,6 @@
           "text": "👂",
           "altText": "ear",
           "searchWords": "body,ear"
-        },
-        {
-          "text": "🦻",
-          "altText": "⊛ ear with hearing aid",
-          "searchWords": "accessibility,ear with hearing aid,hard of hearing"
         },
         {
           "text": "👃",
@@ -1194,21 +1159,6 @@
           "text": "🙋‍♀️",
           "altText": "woman raising hand",
           "searchWords": "gesture,raising hand,woman,woman raising hand"
-        },
-        {
-          "text": "🧏",
-          "altText": "⊛ deaf person",
-          "searchWords": "accessibility,deaf,deaf person,ear,hear"
-        },
-        {
-          "text": "🧏‍♂️",
-          "altText": "⊛ deaf man",
-          "searchWords": "deaf,man"
-        },
-        {
-          "text": "🧏‍♀️",
-          "altText": "⊛ deaf woman",
-          "searchWords": "deaf,woman"
         },
         {
           "text": "🙇",
@@ -1726,66 +1676,6 @@
           "searchWords": "hike,walk,woman,woman walking"
         },
         {
-          "text": "🧍",
-          "altText": "⊛ person standing",
-          "searchWords": "person standing,stand,standing"
-        },
-        {
-          "text": "🧍‍♂️",
-          "altText": "⊛ man standing",
-          "searchWords": "man,standing"
-        },
-        {
-          "text": "🧍‍♀️",
-          "altText": "⊛ woman standing",
-          "searchWords": "standing,woman"
-        },
-        {
-          "text": "🧎",
-          "altText": "⊛ person kneeling",
-          "searchWords": "kneel,kneeling,person kneeling"
-        },
-        {
-          "text": "🧎‍♂️",
-          "altText": "⊛ man kneeling",
-          "searchWords": "kneeling,man"
-        },
-        {
-          "text": "🧎‍♀️",
-          "altText": "⊛ woman kneeling",
-          "searchWords": "kneeling,woman"
-        },
-        {
-          "text": "👨‍🦯",
-          "altText": "⊛ man with probing cane",
-          "searchWords": "accessibility,blind,man,man with probing cane"
-        },
-        {
-          "text": "👩‍🦯",
-          "altText": "⊛ woman with probing cane",
-          "searchWords": "accessibility,blind,woman,woman with probing cane"
-        },
-        {
-          "text": "👨‍🦼",
-          "altText": "⊛ man in motorized wheelchair",
-          "searchWords": "accessibility,man,man in motorized wheelchair,wheelchair"
-        },
-        {
-          "text": "👩‍🦼",
-          "altText": "⊛ woman in motorized wheelchair",
-          "searchWords": "accessibility,wheelchair,woman,woman in motorized wheelchair"
-        },
-        {
-          "text": "👨‍🦽",
-          "altText": "⊛ man in manual wheelchair",
-          "searchWords": "accessibility,man,man in manual wheelchair,wheelchair"
-        },
-        {
-          "text": "👩‍🦽",
-          "altText": "⊛ woman in manual wheelchair",
-          "searchWords": "accessibility,wheelchair,woman,woman in manual wheelchair"
-        },
-        {
           "text": "🏃",
           "altText": "person running",
           "searchWords": "marathon,person running,running"
@@ -2101,11 +1991,6 @@
           "searchWords": "hotel,person in bed,sleep"
         },
         {
-          "text": "🧑‍🤝‍🧑",
-          "altText": "⊛ people holding hands",
-          "searchWords": "couple,hand,hold,holding hands,people holding hands,person"
-        },
-        {
           "text": "👭",
           "altText": "women holding hands",
           "searchWords": "couple,hand,holding hands,women,women holding hands"
@@ -2332,11 +2217,6 @@
           "searchWords": "gorilla"
         },
         {
-          "text": "🦧",
-          "altText": "⊛ orangutan",
-          "searchWords": "ape,orangutan"
-        },
-        {
           "text": "🐶",
           "altText": "dog face",
           "searchWords": "dog,face,pet"
@@ -2345,16 +2225,6 @@
           "text": "🐕",
           "altText": "dog",
           "searchWords": "dog,pet"
-        },
-        {
-          "text": "🦮",
-          "altText": "⊛ guide dog",
-          "searchWords": "accessibility,blind,guide,guide dog"
-        },
-        {
-          "text": "🐕‍🦺",
-          "altText": "⊛ service dog",
-          "searchWords": "accessibility,assistance,dog,service"
         },
         {
           "text": "🐩",
@@ -2582,21 +2452,6 @@
           "searchWords": "face,panda"
         },
         {
-          "text": "🦥",
-          "altText": "⊛ sloth",
-          "searchWords": "lazy,sloth,slow"
-        },
-        {
-          "text": "🦦",
-          "altText": "⊛ otter",
-          "searchWords": "fishing,otter,playful"
-        },
-        {
-          "text": "🦨",
-          "altText": "⊛ skunk",
-          "searchWords": "skunk,stink"
-        },
-        {
           "text": "🦘",
           "altText": "kangaroo",
           "searchWords": "Australia,joey,jump,kangaroo,marsupial"
@@ -2675,11 +2530,6 @@
           "text": "🦉",
           "altText": "owl",
           "searchWords": "bird,owl,wise"
-        },
-        {
-          "text": "🦩",
-          "altText": "⊛ flamingo",
-          "searchWords": "flamboyant,flamingo,tropical"
         },
         {
           "text": "🦚",
@@ -3088,16 +2938,6 @@
           "searchWords": "broccoli,wild cabbage"
         },
         {
-          "text": "🧄",
-          "altText": "⊛ garlic",
-          "searchWords": "flavoring,garlic"
-        },
-        {
-          "text": "🧅",
-          "altText": "⊛ onion",
-          "searchWords": "flavoring,onion"
-        },
-        {
           "text": "🍄",
           "altText": "mushroom",
           "searchWords": "mushroom,toadstool"
@@ -3141,11 +2981,6 @@
           "text": "🥞",
           "altText": "pancakes",
           "searchWords": "crêpe,food,hotcake,pancake,pancakes"
-        },
-        {
-          "text": "🧇",
-          "altText": "⊛ waffle",
-          "searchWords": "indecisive,iron,waffle"
         },
         {
           "text": "🧀",
@@ -3213,11 +3048,6 @@
           "searchWords": "falafel,flatbread,food,gyro,kebab,stuffed"
         },
         {
-          "text": "🧆",
-          "altText": "⊛ falafel",
-          "searchWords": "chickpea,falafel,meatball"
-        },
-        {
           "text": "🥚",
           "altText": "egg",
           "searchWords": "egg,food"
@@ -3251,11 +3081,6 @@
           "text": "🍿",
           "altText": "popcorn",
           "searchWords": "popcorn"
-        },
-        {
-          "text": "🧈",
-          "altText": "⊛ butter",
-          "searchWords": "butter,dairy"
         },
         {
           "text": "🧂",
@@ -3371,11 +3196,6 @@
           "text": "🦑",
           "altText": "squid",
           "searchWords": "food,molusc,squid"
-        },
-        {
-          "text": "🦪",
-          "altText": "⊛ oyster",
-          "searchWords": "diving,oyster,pearl"
         },
         {
           "text": "🍦",
@@ -3516,21 +3336,6 @@
           "text": "🥤",
           "altText": "cup with straw",
           "searchWords": "cup with straw,juice,soda,malt,soft drink,water"
-        },
-        {
-          "text": "🧃",
-          "altText": "⊛ beverage box",
-          "searchWords": "beverage box,juice box"
-        },
-        {
-          "text": "🧉",
-          "altText": "⊛ mate",
-          "searchWords": "drink,mate"
-        },
-        {
-          "text": "🧊",
-          "altText": "⊛ ice",
-          "searchWords": "cold,ice,ice cube,iceberg"
         },
         {
           "text": "🥢",
@@ -3777,11 +3582,6 @@
           "text": "🕌",
           "altText": "mosque",
           "searchWords": "islam,mosque,Muslim,religion"
-        },
-        {
-          "text": "🛕",
-          "altText": "⊛ hindu temple",
-          "searchWords": "hindu,temple"
         },
         {
           "text": "🕍",
@@ -4034,21 +3834,6 @@
           "searchWords": "motor,scooter"
         },
         {
-          "text": "🦽",
-          "altText": "⊛ manual wheelchair",
-          "searchWords": "accessibility,manual wheelchair"
-        },
-        {
-          "text": "🦼",
-          "altText": "⊛ motorized wheelchair",
-          "searchWords": "accessibility,motorized wheelchair"
-        },
-        {
-          "text": "🛺",
-          "altText": "⊛ auto rickshaw",
-          "searchWords": "auto rickshaw,tuk tuk"
-        },
-        {
           "text": "🚲",
           "altText": "bicycle",
           "searchWords": "bicycle,bike"
@@ -4172,11 +3957,6 @@
           "text": "🛬",
           "altText": "airplane arrival",
           "searchWords": "aeroplane,airplane,airplane arrival,arrivals,arriving,landing"
-        },
-        {
-          "text": "🪂",
-          "altText": "⊛ parachute",
-          "searchWords": "hang-glide,parachute,parasail,skydive"
         },
         {
           "text": "💺",
@@ -4462,11 +4242,6 @@
           "text": "🌞",
           "altText": "sun with face",
           "searchWords": "bright,face,sun,sun with face"
-        },
-        {
-          "text": "🪐",
-          "altText": "⊛ ringed planet",
-          "searchWords": "ringed planet,saturn,saturnine"
         },
         {
           "text": "⭐",
@@ -4870,11 +4645,6 @@
           "searchWords": "fish,fishing pole,pole"
         },
         {
-          "text": "🤿",
-          "altText": "⊛ diving mask",
-          "searchWords": "diving,diving mask,scuba,snorkeling"
-        },
-        {
           "text": "🎽",
           "altText": "running shirt",
           "searchWords": "athletics,running,sash,shirt"
@@ -4898,16 +4668,6 @@
           "text": "🎯",
           "altText": "direct hit",
           "searchWords": "bullseye,dart,direct hit,game,hit,target"
-        },
-        {
-          "text": "🪀",
-          "altText": "⊛ yo-yo",
-          "searchWords": "fluctuate,toy,yo-yo"
-        },
-        {
-          "text": "🪁",
-          "altText": "⊛ kite",
-          "searchWords": "fly,kite,soar"
         },
         {
           "text": "🎱",
@@ -5046,11 +4806,6 @@
           "searchWords": "doctor,experiment,lab coat,scientist"
         },
         {
-          "text": "🦺",
-          "altText": "⊛ safety vest",
-          "searchWords": "emergency,safety,vest\n➯ Used in a ZWJ sequence for service dog"
-        },
-        {
           "text": "👔",
           "altText": "necktie",
           "searchWords": "clothing,necktie,tie"
@@ -5094,26 +4849,6 @@
           "text": "👘",
           "altText": "kimono",
           "searchWords": "clothing,kimono"
-        },
-        {
-          "text": "🥻",
-          "altText": "⊛ sari",
-          "searchWords": "clothing,dress,sari"
-        },
-        {
-          "text": "🩱",
-          "altText": "⊛ one-piece swimsuit",
-          "searchWords": "bathing suit,one-piece swimsuit,swimsuit"
-        },
-        {
-          "text": "🩲",
-          "altText": "⊛ briefs",
-          "searchWords": "bathing suit,briefs,one-piece,swimsuit,underwear"
-        },
-        {
-          "text": "🩳",
-          "altText": "⊛ shorts",
-          "searchWords": "bathing suit,pants,shorts,underwear,swimsuit"
         },
         {
           "text": "👙",
@@ -5179,11 +4914,6 @@
           "text": "👡",
           "altText": "woman’s sandal",
           "searchWords": "clothing,sandal,shoe,woman,woman’s sandal"
-        },
-        {
-          "text": "🩰",
-          "altText": "⊛ ballet shoes",
-          "searchWords": "ballet,ballet shoes,dance"
         },
         {
           "text": "👢",
@@ -5354,11 +5084,6 @@
           "text": "🎻",
           "altText": "violin",
           "searchWords": "instrument,music,violin"
-        },
-        {
-          "text": "🪕",
-          "altText": "⊛ banjo",
-          "searchWords": "banjo,music,stringed"
         },
         {
           "text": "🥁",
@@ -5534,11 +5259,6 @@
           "text": "🏮",
           "altText": "red paper lantern",
           "searchWords": "bar,lantern,light,red,red paper lantern"
-        },
-        {
-          "text": "🪔",
-          "altText": "⊛ diya lamp",
-          "searchWords": "diya,lamp,oil"
         },
         {
           "text": "📔",
@@ -5931,11 +5651,6 @@
           "searchWords": "hammer,tool"
         },
         {
-          "text": "🪓",
-          "altText": "⊛ axe",
-          "searchWords": "axe,chop,hatchet,split,wood"
-        },
-        {
           "text": "⛏",
           "altText": "pick",
           "searchWords": "mining,pick,tool"
@@ -6001,11 +5716,6 @@
           "searchWords": "balance,justice,Libra,scale,zodiac"
         },
         {
-          "text": "🦯",
-          "altText": "⊛ probing cane",
-          "searchWords": "accessibility,blind,probing cane"
-        },
-        {
           "text": "🔗",
           "altText": "link",
           "searchWords": "link"
@@ -6066,24 +5776,9 @@
           "searchWords": "medicine,needle,shot,sick,syringe"
         },
         {
-          "text": "🩸",
-          "altText": "⊛ drop of blood",
-          "searchWords": "bleed,blood donation,drop of blood,injury,medicine,menstruation"
-        },
-        {
           "text": "💊",
           "altText": "pill",
           "searchWords": "doctor,medicine,pill,sick"
-        },
-        {
-          "text": "🩹",
-          "altText": "⊛ adhesive bandage",
-          "searchWords": "adhesive bandage,bandage"
-        },
-        {
-          "text": "🩺",
-          "altText": "⊛ stethoscope",
-          "searchWords": "doctor,heart,medicine,stethoscope"
         },
         {
           "text": "🚪",
@@ -6101,11 +5796,6 @@
           "searchWords": "couch,couch and lamp,hotel,lamp"
         },
         {
-          "text": "🪑",
-          "altText": "⊛ chair",
-          "searchWords": "chair,seat,sit"
-        },
-        {
           "text": "🚽",
           "altText": "toilet",
           "searchWords": "toilet"
@@ -6119,11 +5809,6 @@
           "text": "🛁",
           "altText": "bathtub",
           "searchWords": "bath,bathtub"
-        },
-        {
-          "text": "🪒",
-          "altText": "⊛ razor",
-          "searchWords": "razor,sharp,shave"
         },
         {
           "text": "🧴",
@@ -7117,34 +6802,9 @@
           "searchWords": "circle,geometric,red"
         },
         {
-          "text": "🟠",
-          "altText": "⊛ orange circle",
-          "searchWords": "circle,orange"
-        },
-        {
-          "text": "🟡",
-          "altText": "⊛ yellow circle",
-          "searchWords": "circle,yellow"
-        },
-        {
-          "text": "🟢",
-          "altText": "⊛ green circle",
-          "searchWords": "circle,green"
-        },
-        {
           "text": "🔵",
           "altText": "blue circle",
           "searchWords": "blue,circle,geometric"
-        },
-        {
-          "text": "🟣",
-          "altText": "⊛ purple circle",
-          "searchWords": "circle,purple"
-        },
-        {
-          "text": "🟤",
-          "altText": "⊛ brown circle",
-          "searchWords": "brown,circle"
         },
         {
           "text": "⚫",
@@ -7155,41 +6815,6 @@
           "text": "⚪",
           "altText": "white circle",
           "searchWords": "circle,geometric,white circle"
-        },
-        {
-          "text": "🟥",
-          "altText": "⊛ red square",
-          "searchWords": "red,square"
-        },
-        {
-          "text": "🟧",
-          "altText": "⊛ orange square",
-          "searchWords": "orange,square"
-        },
-        {
-          "text": "🟨",
-          "altText": "⊛ yellow square",
-          "searchWords": "square,yellow"
-        },
-        {
-          "text": "🟩",
-          "altText": "⊛ green square",
-          "searchWords": "green,square"
-        },
-        {
-          "text": "🟦",
-          "altText": "⊛ blue square",
-          "searchWords": "blue,square"
-        },
-        {
-          "text": "🟪",
-          "altText": "⊛ purple square",
-          "searchWords": "purple,square"
-        },
-        {
-          "text": "🟫",
-          "altText": "⊛ brown square",
-          "searchWords": "brown,square"
         },
         {
           "text": "⬛",
