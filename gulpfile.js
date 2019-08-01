@@ -120,7 +120,10 @@ function firefoxCss() {
 }
 
 function watchFirefox() {
-	return gulp.watch([SRC_DIR + '**/*'], firefox);
+	return gulp.watch([SRC_DIR + '**/*'], firefox).on('error', (error) => {
+		console.log(error);
+		this.emit('end');
+	});
 }
 
 const firefox = gulp.series(

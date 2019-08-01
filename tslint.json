@@ -5,6 +5,9 @@
     ],
     "jsRules": {},
     "rules": {
+	"max-line-length": {
+            "options": [100]
+        },
         "indent": [true, "tabs", 4],
         "quotemark": [true, "single", "backtick", "avoid-template"]
     },
