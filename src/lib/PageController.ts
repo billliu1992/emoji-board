@@ -11,12 +11,10 @@ export default class PageController {
 						return;
 					}
 					if (keyEvent.getModifierState('Control') && keyEvent.key === ' ') {
-						if (!keyEvent.target || !('value' in keyEvent.target)) {
-							return;
+						if ('value' in (keyEvent.target as HTMLInputElement) ||
+								(keyEvent.target as HTMLElement).isContentEditable) {
+							keyboardController.attachKeyboardTo(keyEvent.target as HTMLElement);
 						}
-						const targetInputElement =
-							keyEvent.target as HTMLInputElement; // should have value
-						keyboardController.attachKeyboardTo(targetInputElement);
 					}
 				});
 			});

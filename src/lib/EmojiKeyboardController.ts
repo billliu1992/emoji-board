@@ -1,3 +1,5 @@
+import InputController from './InputController';
+
 const EMOJI_BUTTON_ATTRIBUTE = 'data-emoji-button';
 const EMOJI_CATEGORY_ATTRIBUTE = 'data-emoji-category';
 
@@ -7,7 +9,7 @@ const EMOJI_SEARCH_ENTRY_CLASS = 'kb-emoji-search-entry';
 const STYLE_KEYBOARD_PADDING_PX = 10;
 
 export default class EmojiKeyboardController {
-	private currentInput: HTMLInputElement|null;
+	private inputController: InputController;
 	private searchInputEl: HTMLInputElement;
 	private emojiButtons: NodeList;
 	constructor(
@@ -21,12 +23,12 @@ export default class EmojiKeyboardController {
 
 		this.emojiButtons = this.keyboardEl.querySelectorAll(`[${EMOJI_BUTTON_ATTRIBUTE}]`);
 
-		this.currentInput = null;
+		this.inputController = new InputController();
 
 		this.initializeKeyboardListeners();
 	}
 
-	public attachKeyboardTo(element: HTMLInputElement) {
+	public attachKeyboardTo(element: HTMLElement) {
 		// We do not want to attach the keyboard to itself, the interaction is extremely awkward.
 		if (this.keyboardEl.contains(element)) {
 			return;
@@ -35,7 +37,7 @@ export default class EmojiKeyboardController {
 		this.appendPoint.appendChild(this.keyboardEl);
 		this.positionKeyboardAround(element);
 		this.searchInputEl.focus();
-		this.currentInput = element;
+		this.inputController.setInputElement(element);
 	}
 
 	public hideKeyboard() {
@@ -55,13 +57,7 @@ export default class EmojiKeyboardController {
 		this.keyboardEl.addEventListener('click', (event) => {
 			const targetEl = event.target as HTMLElement; // Should always be element.
 			if (typeof targetEl.getAttribute(EMOJI_BUTTON_ATTRIBUTE) === 'string') {
-				if (this.currentInput) {
-					this.currentInput.value += targetEl.innerText;
-					// Simulate as if this was entered through a keyboard.
-					this.currentInput.dispatchEvent(new Event('change'));
-					this.currentInput.dispatchEvent(new Event('keydown'));
-					this.currentInput.dispatchEvent(new Event('keyup'));
-				}
+				this.inputController.addToInput(targetEl.innerText);
 			} else if (typeof targetEl.getAttribute(EMOJI_CATEGORY_ATTRIBUTE) === 'string') {
 				const newCategory = targetEl.getAttribute(EMOJI_CATEGORY_ATTRIBUTE);
 				if (newCategory) {
@@ -80,16 +76,11 @@ export default class EmojiKeyboardController {
 		this.keyboardEl.addEventListener('keyup', (keyEvent) => {
 			switch (keyEvent.key) {
 				case 'Escape':
-					// Fall through
-				case 'Enter':
 					keyEvent.stopPropagation();
 					keyEvent.preventDefault();
-					if (this.currentInput) {
-						this.currentInput.focus();
-					}
-					this.currentInput = null;
+					this.inputController.focus();
+					this.inputController.clearInputElement();
 					this.hideKeyboard();
-
 					break;
 			}
 		});
