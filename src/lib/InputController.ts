@@ -11,38 +11,44 @@ export default class InputController {
 		}
 
 		if (this.inputEl && 'value' in (this.inputEl as HTMLInputElement)) {
-			(this.inputEl as HTMLInputElement).value += input;
+			this.addToInputElement(this.inputEl as HTMLInputElement, input);
+			return;
 		}
-		// Simulate as if this was entered through a keyboard.
 
+		this.addToContentEditable(this.inputEl, input);
+	}
+
+	private addToContentEditable(contentEditableToAdd: HTMLElement, input:string) {
 		const inputDataTransfer = new DataTransfer();
 		inputDataTransfer.setData(input, 'text/plain');
 
-		this.inputEl.dispatchEvent(
+		contentEditableToAdd.dispatchEvent(
 			new CompositionEvent('compositionstart', {
 				bubbles: true,
-				data: input,
+				data: '',
 			}));
-		this.inputEl.dispatchEvent(
-			new InputEvent('input', {
-				bubbles: true,
-				data: input,
-				dataTransfer: inputDataTransfer,
-			}));
-		this.inputEl.dispatchEvent(
+		contentEditableToAdd.dispatchEvent(
 			new CompositionEvent('compositionend', {
 				bubbles: true,
 				data: input,
 			}));
-		this.inputEl.dispatchEvent(
+		contentEditableToAdd.dispatchEvent(
+			new InputEvent('compositionend', {
+				bubbles: true,
+				data: input,
+				inputType: 'insertCompositionText',
+				isComposing: false,
+			}));
+	}
+
+	private addToInputElement(inputElement: HTMLInputElement, input:string) {
+		inputElement.value += input;
+
+		inputElement.dispatchEvent(
 			new KeyboardEvent('keydown', {
 				bubbles: true,
 			}));
-		this.inputEl.dispatchEvent(
-			new Event('change', {
-				bubbles: true,
-			}));
-		this.inputEl.dispatchEvent(
+		inputElement.dispatchEvent(
 			new KeyboardEvent('keyup', {
 				bubbles: true,
 			}));
