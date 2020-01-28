@@ -1,7 +1,8 @@
 {
-	"include": ["*.ts"],
+	"include": ["../lib/*.ts", "*.ts"],
 	"extends": "../tsconfig_base.json",
-	"references": [
-		{ "path": "../lib" }
-	]
+	"compilerOptions": {
+		"rootDir": "../",
+		"outDir": "../../build"
+	}
 }

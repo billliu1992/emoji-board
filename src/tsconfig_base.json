@@ -9,9 +9,6 @@
 				"es2016",
 				"dom"
 		],
-		"rootDir": "./",
-		"outDir": "../build",
-		"composite": true,
 		"plugins": [
 			{
 			  "name": "typescript-tslint-plugin",
