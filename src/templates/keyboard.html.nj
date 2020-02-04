@@ -1,6 +1,9 @@
 <div class="{{'kb-container kb-theme-white'|cssPre}} kb-cat-1-active" tabindex="0">
 	<input class="{{'kb-search'|cssPre}}" type="text" placeholder="Search" data-emoji-search>
 	<div class="{{'kb-category-selector'|cssPre}}">
+		<a class="{{'kb-category-selector-option'|cssPre}}" data-emoji-category="history">
+			H
+		</a>
 		{% for category in categories %}
 			<a class="{{'kb-category-selector-option'|cssPre}} kb-cat-{{loop.index}}-link"
 					title="{{category.altText}}" data-emoji-category="{{loop.index}}">
@@ -9,6 +12,8 @@
 		{% endfor %}
 	</div>
 	<div class="{{'kb-emoji-selector'|cssPre}}">
+		<span class="{{'kb-category'|cssPre}} kb-cat-history">
+		</span>
 		{% for category in categories %}
 			<span class="{{'kb-category'|cssPre}} kb-cat-{{loop.index}}">
 				{% for emoji in category.emojis %}{# -- Leave no space between emojis

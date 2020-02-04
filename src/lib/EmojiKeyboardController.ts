@@ -1,4 +1,7 @@
+import HistoryController from './HistoryController';
 import InputController from './InputController';
+
+const EMOJI_CATEGORY_VALUE_HISTORY = 'history';
 
 const EMOJI_BUTTON_ATTRIBUTE = 'data-emoji-button';
 const EMOJI_CATEGORY_ATTRIBUTE = 'data-emoji-category';
@@ -10,6 +13,7 @@ const STYLE_KEYBOARD_PADDING_PX = 10;
 
 export default class EmojiKeyboardController {
 	private inputController: InputController;
+	private historyController: HistoryController;
 	private searchInputEl: HTMLInputElement;
 	private emojiButtons: NodeList;
 	constructor(
@@ -24,6 +28,12 @@ export default class EmojiKeyboardController {
 		this.emojiButtons = this.keyboardEl.querySelectorAll(`[${EMOJI_BUTTON_ATTRIBUTE}]`);
 
 		this.inputController = new InputController();
+
+		const historyPageEl = keyboardEl.querySelector('.kb-cat-history');
+		if (!historyPageEl) {
+			throw new Error('Somehow the keyboard did not have a history page');
+		}
+		this.historyController = new HistoryController(historyPageEl);
 
 		this.initializeKeyboardListeners();
 	}
@@ -43,6 +53,7 @@ export default class EmojiKeyboardController {
 	public hideKeyboard() {
 		this.stopSearching();
 		this.keyboardEl.remove();
+		this.historyController.refreshHistoryPage();
 	}
 
 	public isShowing(): boolean {
@@ -58,8 +69,12 @@ export default class EmojiKeyboardController {
 			const targetEl = event.target as HTMLElement; // Should always be element.
 			if (typeof targetEl.getAttribute(EMOJI_BUTTON_ATTRIBUTE) === 'string') {
 				this.inputController.addToInput(targetEl.innerText);
+				this.historyController.push(targetEl.innerText);
 			} else if (typeof targetEl.getAttribute(EMOJI_CATEGORY_ATTRIBUTE) === 'string') {
 				const newCategory = targetEl.getAttribute(EMOJI_CATEGORY_ATTRIBUTE);
+				if (newCategory === EMOJI_CATEGORY_VALUE_HISTORY) {
+					this.historyController.refreshHistoryPage();
+				}
 				if (newCategory) {
 					this.setNewKeyboardCategory(newCategory);
 				}

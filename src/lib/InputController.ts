@@ -18,7 +18,26 @@ export default class InputController {
 		this.addToContentEditable(this.inputEl, input);
 	}
 
-	private addToContentEditable(contentEditableToAdd: HTMLElement, input:string) {
+	public focus() {
+		if (!this.inputEl) {
+			return;
+		}
+		this.inputEl.focus();
+	}
+
+	public setInputElement(newEl: HTMLElement) {
+		this.inputEl = newEl;
+	}
+
+	public clearInputElement() {
+		this.inputEl = null;
+	}
+
+	public isInputElementSet(): boolean {
+		return true;
+	}
+
+	private addToContentEditable(contentEditableToAdd: HTMLElement, input: string) {
 		const inputDataTransfer = new DataTransfer();
 		inputDataTransfer.setData(input, 'text/plain');
 
@@ -41,7 +60,7 @@ export default class InputController {
 			}));
 	}
 
-	private addToInputElement(inputElement: HTMLInputElement, input:string) {
+	private addToInputElement(inputElement: HTMLInputElement, input: string) {
 		inputElement.value += input;
 
 		inputElement.dispatchEvent(
@@ -52,25 +71,6 @@ export default class InputController {
 			new KeyboardEvent('keyup', {
 				bubbles: true,
 			}));
-	}
-
-	public focus() {
-		if (!this.inputEl) {
-			return;
-		}
-		this.inputEl.focus();
-	}
-
-	public setInputElement(newEl: HTMLElement) {
-		this.inputEl = newEl;
-	}
-
-	public clearInputElement() {
-		this.inputEl = null;
-	}
-
-	public isInputElementSet(): boolean {
-		return true;
 	}
 }
 
