@@ -17,7 +17,7 @@
 			  "configFile": "../tslint.json"
 			}
 		],
-		"types": ["web-ext-types"]
+		"types": ["web-ext-types", "@types/chrome"]
 	},
 	"compileOnSave": true
 }

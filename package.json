@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/chrome": "0.0.93",
     "browserify": "^16.5.0",
     "del": "^4.1.1",
     "emoji.json": "^12.1.1",

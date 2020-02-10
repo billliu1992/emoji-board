@@ -126,12 +126,59 @@ function watchFirefox() {
 	});
 }
 
+function chromeScripts() {
+	return browserify()
+		.add(SRC_DIR + 'chrome/ContentScript.ts')
+		.plugin(tsify, {project: SRC_DIR + 'chrome/tsconfig.json'})
+		.bundle()
+		.pipe(source('ContentScript.js'))
+		.pipe(gulp.dest(BUILD_DIR + 'chrome'));
+}
+
+function chromeManifest() {
+	return gulp.src(SRC_DIR + 'chrome/manifest.json')
+		.pipe(gulp.dest(BUILD_DIR + 'chrome'));
+}
+
+function chromeHtml() {
+	const emojiConfig = fs.readFileSync(EMOJI_FILE);
+	const renderedTemplate =
+		nunjucksEnv.render(SRC_DIR + 'templates/keyboard.html.nj', JSON.parse(emojiConfig));
+
+	return file('keyboard.html', renderedTemplate, { src: true })
+		.pipe(htmlmin())
+		.pipe(gulp.dest(BUILD_DIR + 'chrome'));
+}
+
+function chromeCss() {
+	const emojiConfig = fs.readFileSync(EMOJI_FILE);
+	const renderedTemplate =
+		nunjucksEnv.render(SRC_DIR + 'templates/keyboard.css.nj', JSON.parse(emojiConfig));
+
+	return file('keyboard.css', renderedTemplate, { src: true })
+		.pipe(gulp.dest(BUILD_DIR + 'chrome'));
+}
+
+function watchChrome() {
+	return gulp.watch([SRC_DIR + '**/*'], chrome).on('error', (error) => {
+		console.log(error);
+		this.emit('end');
+	});
+}
+
 const firefox = gulp.series(
 	clean,
 	init,
 	gulp.parallel(firefoxScripts, firefoxManifest, firefoxHtml, firefoxCss));
 
+const chrome = gulp.series(
+	clean,
+	init,
+	gulp.parallel(chromeScripts, chromeManifest, chromeHtml, chromeCss));
+
 exports.clean = clean;
 exports['init'] = init;
 exports['build-ff'] = firefox;
 exports['watch-ff'] = gulp.series(firefox, watchFirefox);
+exports['build-chr'] = chrome;
+exports['watch-chr'] = gulp.series(chrome, watchChrome);
