@@ -12,5 +12,8 @@
 	"web_accessible_resources": [
 		"keyboard.html"
 	],
+	"permissions": [
+		"storage"
+	],
 	"manifest_version": 2
 }
